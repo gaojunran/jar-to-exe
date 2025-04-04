@@ -6,3 +6,4 @@ edition = "2021"
 [dependencies]
 include_dir = "0.7"
 tempfile = "3"
+dirs = "4.0"
