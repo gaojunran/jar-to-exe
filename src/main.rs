@@ -14,14 +14,14 @@ fn main() {
     fs::create_dir_all(&temp_path).expect("Failed to create temp directory");
 
     // 解压 bundle 目录到临时目录
-    println!("Waiting for JRE and JAR to be extracted...");
+    eprintln!("Waiting for JRE and JAR to be extracted...");
     extract_bundle(&temp_path);
 
     // 获取 JRE 和 JAR 文件路径
     let jre_path = temp_path.join("jre/bin/java.exe");
     let jar_path = temp_path.join("app.jar");
 
-    println!("------- Running Java Application -------");
+    eprintln!("------- Running Java Application -------");
 
     // 执行 java -jar
     let output = Command::new(jre_path)
@@ -33,7 +33,7 @@ fn main() {
     // 等待进程结束
     let _ = output.wait_with_output();
 
-    println!("------- Java Application Finished -------");
+    eprintln!("------- Java Application Finished -------");
 
     // 删除临时目录
     fs::remove_dir_all(temp_path).expect("Failed to remove temp directory");
